@@ -1,12 +1,19 @@
-'use strict'
+'use strict';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const App = () => {
+import { ChakraProvider } from '@chakra-ui/react';
+import { theme } from './Theme';
+
+import App from './components/App';
+
+const Root = () => {
   return (
-    <div>Hello world</div>
-  )
+    <ChakraProvider theme={theme}>
+      <App />
+    </ChakraProvider>
+  );
 };
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(<Root />, document.getElementById('root'));

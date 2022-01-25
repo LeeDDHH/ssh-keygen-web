@@ -14,7 +14,7 @@ const front: Configuration = {
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
-      publicPath: '/'
+      publicPath: '/',
     },
     historyApiFallback: true,
     compress: true,

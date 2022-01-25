@@ -16,13 +16,13 @@ const base: Configuration = {
     __filename: false,
   },
   resolve: {
-    extensions: ['.js', '.ts', '.jsx', '.tsx', '.json'],
+    extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.zip'],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: './',
     filename: '[name].js',
-    assetModuleFilename: 'images/[name][ext]',
+    assetModuleFilename: 'assets/[name][ext]',
   },
   module: {
     rules: [
@@ -47,6 +47,11 @@ const base: Configuration = {
         // type: 'asset/resource',
         // Base64にして取り込む
         type: 'asset/inline',
+      },
+      {
+        test: /\.(zip|ascii)$/,
+        // ファイルそのまま取り込む
+        type: 'asset/source',
       },
     ],
   },
