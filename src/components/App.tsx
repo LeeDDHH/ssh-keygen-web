@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 
-import { Box, Button, Center, Link, Text } from '@chakra-ui/react';
+import { Box, Button, Center } from '@chakra-ui/react';
 import { FaKey } from 'react-icons/fa';
 
 import { generateSSHKeyZip } from '../lib/SSHKeyGen';

@@ -1,54 +1,11 @@
-# React + TypeScript + Webpack5
+# SSHKeyGen on Web
 
-## プロジェクト前提
+## Application
 
-- できるだけ `ts` ファイルで構成する
-- `dev` は `webpack` の `devServer` で立ち上げる
-- `create-react-app` ではなく、 `webpack` でビルドする
+## Thanks to
 
----
+[Patrick Roumanoff](https://github.com/PatrickRoumanoff) and [Ryo Ota](https://github.com/nwtgck).
 
-## 構成
+The core of this project was originally created by [PatrickRoumanoff/js-keygen](https://github.com/PatrickRoumanoff/js-keygen).
 
-|||
-|:---:|:---:|
-|Node.js|16.9.0|
-|npm|7.21.1|
-|React|17.0.2|
-|TypeScript|4.5.5|
-|webpack|5.66.0|
-|webpack-cli|4.9.1|
-|webpack-dev-server|4.7.3|
-
----
-
-## コマンド
-
-### ローカルでdev実行
-
-```bash
-npm run dev
-```
-
-- `dist` を削除する
-- `dev` 用にビルドする
-- `webpack` の `devServer` で立ち上げる
-
-### ローカルでprod実行
-
-```bash
-npm start
-```
-
-- `dist` を削除する
-- `prod` 用にビルドする
-- `http-server` でローカルのHTTPサーバーをで立ち上げる
-
-### prod用のビルドをする
-
-```bash
-npm run build
-```
-
-- `dist` を削除する
-- `prod` 用にビルドする
+This app use [nwtgck/web-ssh-keygen](https://github.com/nwtgck/web-ssh-keygen).
