@@ -1,7 +1,7 @@
 {
-  "name": "react-ts-webpack",
+  "name": "ssh-keygen-web",
   "version": "1.0.0",
-  "description": "react + typescript + webpack template",
+  "description": "ssh-keygen for web",
   "main": "dist/index.js",
   "private": true,
   "scripts": {
