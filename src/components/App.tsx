@@ -2,17 +2,24 @@
 
 import React, { useState, useRef } from 'react';
 
-import { Box, Button, Center } from '@chakra-ui/react';
+import { Box, Button, Center, FormLabel, Input, Stack } from '@chakra-ui/react';
+
+import { IconContext } from 'react-icons';
 import { FaKey } from 'react-icons/fa';
+import { HiClipboardCopy } from 'react-icons/hi';
 
 import { generateSSHKeyZip } from '../lib/SSHKeyGen';
 
 import { generateForm, generateFooter } from './Form';
 
+const clipBoardColor = '#ECC94B';
+const clipBoardHoveredColor = '#D69E2E';
+
 const App = () => {
   const [size, setSize] = useState<SizeType>(2048);
   const [hash, setHash] = useState<HashType>('SHA-256');
   const [comment, setComment] = useState<string>('');
+  const [publicKey, setPublicKey] = useState<string>('');
   const processing = useRef(false);
 
   const stateObj = {
@@ -32,7 +39,12 @@ const App = () => {
     setTimeout(() => {
       processing.current = false;
     }, 10000);
-    await generateSSHKeyZip(size, hash, comment);
+    const result: string = await generateSSHKeyZip(size, hash, comment);
+    setPublicKey(result);
+  };
+
+  const copyPublicKeyToClipboard = () => {
+    navigator.clipboard.writeText(publicKey);
   };
 
   return (
@@ -48,6 +60,36 @@ const App = () => {
           SSHKeyGen on Web
         </Center>
         {generateForm(stateObj)}
+        <Center mt={4} mb={4}>
+          <Stack w="22vw">
+            <FormLabel htmlFor="publicKey" fontWeight="bold">
+              公開鍵
+            </FormLabel>
+            <Stack w="100%" direction="row">
+              <Input
+                id="publicKey"
+                type="text"
+                value={publicKey}
+                readOnly={true}
+                disabled={!publicKey.length}
+              />
+              {publicKey.length ? (
+                <IconContext.Provider
+                  value={{ color: clipBoardColor, size: '40px' }}>
+                  <HiClipboardCopy
+                    onMouseOver={({ currentTarget }) =>
+                      (currentTarget.style.color = clipBoardHoveredColor)
+                    }
+                    onMouseOut={({ currentTarget }) =>
+                      (currentTarget.style.color = clipBoardColor)
+                    }
+                    onClick={copyPublicKeyToClipboard}
+                  />
+                </IconContext.Provider>
+              ) : null}
+            </Stack>
+          </Stack>
+        </Center>
         <Button
           leftIcon={<FaKey />}
           colorScheme="yellow"

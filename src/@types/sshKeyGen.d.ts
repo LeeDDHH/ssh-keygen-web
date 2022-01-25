@@ -9,4 +9,5 @@ declare type GeneratedKeyPairObj = {
 declare type GeneratedKeyPairBlobObj = {
   SSHPublicKey: Blob;
   SSHPrivateKey: Blob;
+  publicKey: string;
 };

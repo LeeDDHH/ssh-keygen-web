@@ -23,15 +23,16 @@ const generateSSHKey = async (
 
   const SSHPublicKey = generateSSHKeyBlob(result.publicKey);
   const SSHPrivateKey = generateSSHKeyBlob(result.privateKey);
-  return { SSHPublicKey, SSHPrivateKey };
+  const publicKey = result.publicKey;
+  return { SSHPublicKey, SSHPrivateKey, publicKey };
 };
 
 const generateSSHKeyZip = async (
   size: SizeType,
   hash: HashType,
   comment: string
-): Promise<void> => {
-  const { SSHPublicKey, SSHPrivateKey } = await generateSSHKey(
+): Promise<string> => {
+  const { SSHPublicKey, SSHPrivateKey, publicKey } = await generateSSHKey(
     size,
     hash,
     comment
@@ -48,7 +49,7 @@ const generateSSHKeyZip = async (
     downloadLink.click();
     downloadLink.remove();
   });
-  return;
+  return publicKey;
 };
 
 export { generateSSHKeyZip };
